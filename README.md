@@ -113,9 +113,11 @@
     ```
     
   + **Truy vân một document dựa vào id**
+  
     ```
     GET web/blog/1
     ```
+    
     Kết quả trả về
     
     ```
@@ -141,7 +143,9 @@
   + **Tìm kiếm**
   
     Có 2 cách thực hiện tìm kiếm
+
     - Lệnh tìm kiếm đặt ngay trên url: 
+    
       ```
       GET /web/blog/_search?q=admin:GenK
       ```
@@ -193,6 +197,133 @@
       }
     }
     ```
+  
+  +**Lọc dữ liệu theo điều kiện**
+  
+    Ví dụ ta tìm những blog có rank nhỏ hơn 2
+    
+    ```
+    GET /web/blog/_search
+    {
+      "query" : {
+        "filtered" : {
+            "filter" : {
+                "range" : {
+                    "rank" : { "lt" : 2 } 
+                }
+            }
+        }
+      }
+    }
+    ```
+    
+    Kết quả: 
+    
+    ```
+    {
+      "took": 33,
+      "timed_out": false,
+      "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+      },
+      "hits": {
+        "total": 1,
+        "max_score": 1,
+        "hits": [
+          {
+            "_index": "web",
+            "_type": "blog",
+            "_id": "1",
+            "_score": 1,
+            "_source": {
+              "title": "Tinh tế",
+              "admin": "Cu hiệp",
+              "rank": 1,
+              "about": "Trang tin khoa học và công nghệ",
+              "tag": [
+                "it",
+                "sience"
+              ]
+            }
+          }
+        ]
+      }
+    }
+    ```
+    
+  +**Full-Text Search**
+  
+    Đây là một dạng tìm kiếm nâng cao của Elasticsearch, nó có khả năng đưa ra những document có khả năng phù hợp với câu truy vấn và sắp xếp theo mức độ giảm dần của sự phù hợp.
+    
+    Ví dụ tìm tất cả các blog có phần about nói về  "tin khoa học"
+    
+    ```
+    GET /megacorp/employee/_search
+    {
+        "query" : {
+            "match" : {
+                "about" : "tin khoa học"
+            }
+        }
+    }
+    ```
+    
+    Kết quả trả về là
+    
+    ```
+    {
+      "took": 5,
+      "timed_out": false,
+      "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+      },
+      "hits": {
+        "total": 2,
+        "max_score": 0.19930676,
+        "hits": [
+          {
+            "_index": "web",
+            "_type": "blog",
+            "_id": "1",
+            "_score": 0.19930676,
+            "_source": {
+              "title": "Tinh tế",
+              "admin": "Cu hiệp",
+              "rank": 1,
+              "about": "Trang tin khoa học và công nghệ",
+              "tag": [
+                "it",
+                "sience"
+              ]
+            }
+          },
+          {
+            "_index": "web",
+            "_type": "blog",
+            "_id": "3",
+            "_score": 0.008133275,
+            "_source": {
+              "title": "GenK",
+              "admin": "GenK",
+              "rank": 2,
+              "about": "Trang tin điện tử trên internet",
+              "tag": [
+                "it",
+                "sience"
+              ]
+            }
+          }
+        ]
+      }
+    }
+    ```
+    
+    Ta thấy ở đây dữ liệu trả về có 2 document vì about của document thứ 2 có chữ "tin" khớp với truy vần. Tất nhiên ta vẫn có thể tìm kiếm chính xác bằng cách thay "match_phrase" cho "match" trên câu truy vấn
+  
   
 ## Tài liệu tham khảo
 
