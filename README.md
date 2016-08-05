@@ -324,6 +324,7 @@
     
     Ta thấy ở đây dữ liệu trả về có 2 document vì about của document thứ 2 có chữ "tin" khớp với truy vần. Tất nhiên ta vẫn có thể tìm kiếm chính xác bằng cách thay "match_phrase" cho "match" trên câu truy vấn
   
+  Ngoài ra còn rất nhiều cách truy vấn, thống kê khác. ĐỌc thêm tài liệu [9], [10]
   
 ## Tài liệu tham khảo
 
@@ -342,3 +343,7 @@
 [7] https://www.elastic.co/guide/en/kibana/current/setup.html
 
 [8] https://www.elastic.co/guide/en/sense/current/installing.html
+
+[9] https://www.elastic.co/guide/en/elasticsearch/guide/current/search-in-depth.html
+
+[10] https://www.elastic.co/guide/en/elasticsearch/guide/current/languages.html
