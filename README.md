@@ -57,6 +57,142 @@
     - `QUERY_STRING`: Any optional query-string parameters (for example `?pretty` will _pretty-print_  the JSON response to make it easier to read.)
     - `BODY`: A JSON-encoded request body (if the request needs one.)
   
+  + **Thêm một index**
+    ```
+    curl -i -XPUT 'http://localhost:9200/web'
+    ```
+    
+    Kết quả trả về sẽ là thưc hiện thành công
+    ```
+    HTTP/1.1 200 OK
+    Content-Type: application/json; charset=UTF-8
+    Content-Length: 21
+    {"acknowledged":true}
+    ```
+    
+  + **Sử dụng Sence thêm mới type và document vào "web"**
+    Trước tiên ta phải khai báo index "web" với Kibana (hướng dẫn [7] phần Connect Kibana with Elasticsearch)
+    
+    Sau đó vào link "http://ip-kibana-server:5601/app/sense" để thực hiện lệnh. Ví dụ ở đây ta thêm một document có id "1" thuộc  type là "blog". 
+    
+    ```
+    PUT web/blog/1
+    {
+        "title" : "Tinh tế",
+        "admin" :  "Cu hiệp",
+        "rank" :    1,
+        "about" : "Trang tin khoa học và công nghệ",
+        "tag": [ "it", "sience"]
+    }
+    ```
+    
+    Ấn nút chạy và được kết quả như hình
+
+    ![alt tag](https://github.com/nguyenvulebinh/elasticsearch/blob/master/Screenshot%20from%202016-08-05%2010-09-38.png)
+  
+    Tương tự ta có thể thêm một vài document nữa để demo những bước sau.
+    
+    ```
+    PUT web/blog/2
+    {
+        "title" : "VnReview",
+        "admin" :  "BKAV",
+        "rank" :    2,
+        "about" : "Chuyên trang Công nghệ của tạp chí điện tử Diễn Đàn Đầu Tư",
+        "tag": [ "it", "sience", "mobile"]
+    }
+    
+    PUT web/blog/3
+    {
+        "title" : "GenK",
+        "admin" :  "GenK",
+        "rank" :    2,
+        "about" : "Trang tin điện tử trên internet",
+        "tag": [ "it", "sience"]
+    }
+    ```
+    
+  + **Truy vân một document dựa vào id**
+    ```
+    GET web/blog/1
+    ```
+    Kết quả trả về
+    
+    ```
+    {
+      "_index": "web",
+      "_type": "blog",
+      "_id": "1",
+      "_version": 10,
+      "found": true,
+      "_source": {
+        "title": "Tinh tế",
+        "admin": "Cu hiệp",
+        "rank": 1,
+        "about": "Trang tin khoa học và công nghệ",
+        "tag": [
+          "it",
+          "sience"
+        ]
+      }
+    }
+    ```
+    
+  + **Tìm kiếm**
+  
+    Có 2 cách thực hiện tìm kiếm
+    - Lệnh tìm kiếm đặt ngay trên url: 
+      ```
+      GET /web/blog/_search?q=admin:GenK
+      ```
+    - Lệnh tìm kiếm đặt trong body dạng JSON (Query DSL)
+    
+      ```
+      GET /web/blog/_search
+      {
+          "query" : {
+              "match" : {
+                  "admin" : "GenK"
+              }
+          }
+      }
+      ```
+    
+    Kết quả trả về đều giống nhau là 
+    
+    ```
+    {
+      "took": 7,
+      "timed_out": false,
+      "_shards": {
+        "total": 5,
+        "successful": 5,
+        "failed": 0
+      },
+      "hits": {
+        "total": 1,
+        "max_score": 0.30685282,
+        "hits": [
+          {
+            "_index": "web",
+            "_type": "blog",
+            "_id": "3",
+            "_score": 0.30685282,
+            "_source": {
+              "title": "GenK",
+              "admin": "GenK",
+              "rank": 2,
+              "about": "Trang tin điện tử trên internet",
+              "tag": [
+                "it",
+                "sience"
+              ]
+            }
+          }
+        ]
+      }
+    }
+    ```
   
 ## Tài liệu tham khảo
 
