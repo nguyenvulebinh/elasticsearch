@@ -209,7 +209,7 @@
     }
     ```
   
-  +**Lọc dữ liệu theo điều kiện**
+  + **Lọc dữ liệu theo điều kiện**
   
     Ví dụ ta tìm những blog có rank nhỏ hơn 2
     
@@ -264,7 +264,7 @@
     }
     ```
     
-  +**Full-Text Search**
+  + **Full-Text Search**
   
     Đây là một dạng tìm kiếm nâng cao của Elasticsearch, nó có khả năng đưa ra những document có khả năng phù hợp với câu truy vấn và sắp xếp theo mức độ giảm dần của sự phù hợp.
     
