@@ -30,7 +30,7 @@
 
 ## Cài đặt
 
-  Thưc hiện cài đặt theo tài liệu [3].
+  Thưc hiện cài đặt Elasticsearch theo tài liệu [3].
   
   Việc giao tiếp với Elasticsearch có thể thực hiện theo 3 cách
   
@@ -38,10 +38,26 @@
   - Sử dụng API do Elastic.co cung cấp, Elastic cung cấp thư viện client cho rất nhiều ngôn ngữ như java, php, javascript,.. Tham khảo theo tài liệu [6]
   - Cách trực quan nhất là sử dụng Kibana Sence để thực hiện giao tiếp với Elasticsearch. Tuy nhiên cách này muốn thực hiện được thì trước đó phải có index rồi. Thưc hiện cài đặt Kibana theo tài liệu [7] và cài đặt thêm Sence theo tài liệu [8] 
 
-## Demo
+## Hướng dẫn sử dụng
   
+  + **Cấu trúc request**
   
+  Elasticsearch sử dụng RESTful API với JSON thông qua HTTP/HTTPS. Cấu trúc của một request sẽ là (ví dụ sử dụng curl):
+  
+  ```
+  curl -X<VERB> '<PROTOCOL>://<HOST>:<PORT>/<PATH>?<QUERY_STRING>' -d '<BODY>'
+  ```
+  
+  trong đó
 
+  | VERB  | The appropriate HTTP method or verb: GET, POST, PUT, HEAD, or DELETE.|
+  | PROTOCOL  | Either http or https (if you have an https proxy in front of Elasticsearch.)|
+  | HOST  | The hostname of any node in your Elasticsearch cluster, or localhost for a node on your local machine.|\
+  | PORT  | The port running the Elasticsearch HTTP service, which defaults to 9200.|
+  | PATH  | API Endpoint (for example _count will return the number of documents in the cluster). Path may contain multiple components, such as _cluster/stats or _nodes/stats/jvm|
+  | QUERY_STRING  | Any optional query-string parameters (for example ?pretty will pretty-print the JSON response to make it easier to read.)|
+  | BODY  | A JSON-encoded request body (if the request needs one.)  |
+  
 ## Tài liệu tham khảo
 
 [1] https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html
