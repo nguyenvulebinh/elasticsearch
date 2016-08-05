@@ -15,6 +15,7 @@
   Elasticsearch cung cấp rất nhiều tính năng và cấu hình để thuận tiện cho ngươ sử dụng, đồng thời là một open source cung cấp dưới giấy phép Apache 2 nên có thể tải source về để tùy biến theo ý muốn.
   
 + **Mô tả kiến trúc**
+
   Đọc các khái niệm cơ bản về cluster, node, index, type, document, Shards & Replicas theo tài liệu [1]
   
   Elasticsearch phân chia một cách logic thành các cluster. Mỗi cluster là một instance của Elasticsearch chứa một tập các node. Các node có cùng cluster name thì thuộc cùng một cluster. Node chính là nơi lưu trữ dữ liệu thực tế, các documnet, index. Trong mỗi một cluster sẽ có một node master đảm nhận nhiệm vụ tạo các node mới hoặc hủy node, chuyển hướng yêu cầu tới các node khác trong cùng cluster. Các node có thể nằm trên cùng một máy hoặc trên nhiều máy tính khác nhau. Khi các node nằm trên các máy khác nhau thì cần cấu hình để liên lạc giữa các node có cùng cluster name.
@@ -30,15 +31,31 @@
 ## Cài đặt
 
   Thưc hiện cài đặt theo tài liệu [3].
+  
+  Việc giao tiếp với Elasticsearch có thể thực hiện theo 3 cách
+  
+    - Đơn giản nhất sử dụng tool curl để gửi request trưc tiếp tới server Elasticsearch
+    - Sử dụng API do Elastic.co cung cấp, Elastic cung cấp thư viện client cho rất nhiều ngôn ngữ như java, php, javascript, ... Tham khảo theo tài liệu [6]
+    - Cách trực quan nhất là sử dụng Kibana Sence để thực hiện giao tiếp với Elasticsearch. Tuy nhiên cách này muốn thực hiện được thì trước đó phải có index rồi. Thưc hiện cài đặt Kibana theo tài liệu [7] và cài đặt thêm Sence theo tài liệu [8] 
 
 ## Demo
-
+  
   
 
 ## Tài liệu tham khảo
 
 [1] https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html
+
 [2] https://www.elastic.co/guide/en/elasticsearch/guide/current/distributed-cluster.html
+
 [3] https://www.elastic.co/guide/en/elasticsearch/guide/current/running-elasticsearch.html
+
 [4] https://www.elastic.co/guide/en/elasticsearch/guide/current/version-control.html
+
 [5] https://www.elastic.co/guide/en/elasticsearch/guide/current/optimistic-concurrency-control.html
+
+[6] https://www.elastic.co/guide/en/elasticsearch/client/index.html
+
+[7] https://www.elastic.co/guide/en/kibana/current/setup.html
+
+[8] https://www.elastic.co/guide/en/sense/current/installing.html
