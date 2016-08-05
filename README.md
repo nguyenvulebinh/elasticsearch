@@ -34,11 +34,9 @@
   
   Việc giao tiếp với Elasticsearch có thể thực hiện theo 3 cách
   
-    - Đơn giản nhất sử dụng tool curl để gửi request trưc tiếp tới server Elasticsearch
-    
-    - Sử dụng API do Elastic.co cung cấp, Elastic cung cấp thư viện client cho rất nhiều ngôn ngữ như java, php, javascript, ... Tham khảo theo tài liệu [6]
-    
-    - Cách trực quan nhất là sử dụng Kibana Sence để thực hiện giao tiếp với Elasticsearch. Tuy nhiên cách này muốn thực hiện được thì trước đó phải có index rồi. Thưc hiện cài đặt Kibana theo tài liệu [7] và cài đặt thêm Sence theo tài liệu [8] 
+  - Đơn giản nhất sử dụng tool curl để gửi request trưc tiếp tới server Elasticsearch
+  - Sử dụng API do Elastic.co cung cấp, Elastic cung cấp thư viện client cho rất nhiều ngôn ngữ như java, php, javascript,.. Tham khảo theo tài liệu [6]
+  - Cách trực quan nhất là sử dụng Kibana Sence để thực hiện giao tiếp với Elasticsearch. Tuy nhiên cách này muốn thực hiện được thì trước đó phải có index rồi. Thưc hiện cài đặt Kibana theo tài liệu [7] và cài đặt thêm Sence theo tài liệu [8] 
 
 ## Demo
   
