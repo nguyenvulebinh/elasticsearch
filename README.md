@@ -49,14 +49,14 @@
   ```
   
   trong đó
-
-  | VERB  | The appropriate HTTP method or verb: GET, POST, PUT, HEAD, or DELETE.|
-  | PROTOCOL  | Either http or https (if you have an https proxy in front of Elasticsearch.)|
-  | HOST  | The hostname of any node in your Elasticsearch cluster, or localhost for a node on your local machine.|\
-  | PORT  | The port running the Elasticsearch HTTP service, which defaults to 9200.|
-  | PATH  | API Endpoint (for example _count will return the number of documents in the cluster). Path may contain multiple components, such as _cluster/stats or _nodes/stats/jvm|
+  |-------------- | ------------------|
+  | VERB          | The appropriate HTTP method or verb: GET, POST, PUT, HEAD, or DELETE.|
+  | PROTOCOL      | Either http or https (if you have an https proxy in front of Elasticsearch.)|
+  | HOST          | The hostname of any node in your Elasticsearch cluster, or localhost for a node on your local machine.|
+  | PORT          | The port running the Elasticsearch HTTP service, which defaults to 9200.|
+  | PATH          | API Endpoint (for example _count will return the number of documents in the cluster). Path may contain multiple components, such as _cluster/stats or _nodes/stats/jvm|
   | QUERY_STRING  | Any optional query-string parameters (for example ?pretty will pretty-print the JSON response to make it easier to read.)|
-  | BODY  | A JSON-encoded request body (if the request needs one.)  |
+  | BODY          | A JSON-encoded request body (if the request needs one.)  |
   
 ## Tài liệu tham khảo
 
